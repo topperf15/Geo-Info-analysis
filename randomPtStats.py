@@ -9,7 +9,8 @@ nrndpt = 100 #number of random points in polygon
 nbins = 40 #number of bins for histogram
 
 for i in range(niter):
-    
+    #step 1 is to run the random pts in polygon algorithm
+    #parameters for step 1
     param1 = {'INPUT':inFile,
                 'STRATEGY':0,
                 'VALUE':nrndpt,
@@ -19,12 +20,16 @@ for i in range(niter):
     step1 = processing.run("qgis:randompointsinsidepolygons", param1)
     #QgsProject.instance().addMapLayer(step1['OUTPUT'])
     #print(step1)
+    #step 2 is to run the nearest neighbor algorithm
+    # using the output from step 1
     param2 = {'INPUT':step1['OUTPUT'],
                 'OUTPUT_HTML_FILE':'TEMPORARY_OUTPUT'}
     result = processing.run("native:nearestneighbouranalysis", param2)
+    #add value of this iteration to the Dmean list (array)
     Dmean.append(result['OBSERVED_MD'])
     #print(Dmean, ' ' , sum(Dmean),mean(Dmean))
     #QgsProject.instance().removeMapLayer(step1['OUTPUT'])
+#plot the results in a histogram
 plt.hist(Dmean, bins=nbins)
 plt.show()
     
