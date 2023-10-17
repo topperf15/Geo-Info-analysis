@@ -3,7 +3,7 @@ from qgis import processing
 import matplotlib.pyplot as plt #for plotting the results in a histogram
 from scipy.stats import norm #for fitting a normal (Gaussian) distribution
 Dmean = [] #mean distance
-inFile = '/Users/andrew_s/Library/Mobile Documents/com~apple~CloudDocs/APL/strat ed/Lesson X exercise/WY.shp|layername=WY'
+inFile = '/Users/andrew_s/Library/Mobile Documents/com~apple~CloudDocs/APL/strat ed/Lesson 6 exercise/WY/WY.shp'
 #rndpts= '/Users/andrew_s/Library/Mobile Documents/com~apple~CloudDocs/APL/strat ed/Lesson X exercise/randompts.shp'
 niter = 1000 #number of iterations
 nrndpt = 100 #number of random points in polygon
