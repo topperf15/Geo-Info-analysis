@@ -1,6 +1,7 @@
 from qgis import processing
 #from statistics import mean
 import matplotlib.pyplot as plt #for plotting the results in a histogram
+from scipy.stats import norm #for fitting a normal (Gaussian) distribution
 Dmean = [] #mean distance
 inFile = '/Users/andrew_s/Library/Mobile Documents/com~apple~CloudDocs/APL/strat ed/Lesson X exercise/WY.shp|layername=WY'
 #rndpts= '/Users/andrew_s/Library/Mobile Documents/com~apple~CloudDocs/APL/strat ed/Lesson X exercise/randompts.shp'
@@ -32,4 +33,8 @@ for i in range(niter):
 #plot the results in a histogram
 plt.hist(Dmean, bins=nbins)
 plt.show()
+#fit results into a normal distribution calculating mean and std dev
+(mu, sigma) = norm.fit(Dmean)
+print(mu)
+print(sigma)
     
